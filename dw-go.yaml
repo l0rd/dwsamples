@@ -1,0 +1,30 @@
+kind: DevWorkspace
+apiVersion: workspace.devfile.io/v1alpha2
+metadata:
+  name: go-helloworld
+spec:
+  started: true
+  template:
+    projects:
+      - name: go-hello-world
+        git:
+          remotes:
+            origin: https://github.com/l0rd/go-hello-world.git
+    components:
+      - name: go-cli
+        container:
+          image: quay.io/devfile/universal-developer-image:ubi8-112f94a
+          endpoints:
+          - name: webapp
+            targetPort: 8080
+          memoryLimit: 2Gi
+          cpuLimit: 1000m
+    commands:
+      - id: run
+        exec:
+          component: go-cli
+          commandLine: go run main.go
+      - id: stop
+        exec:
+          component: go-cli
+          commandLine: kill $(pidof go)
