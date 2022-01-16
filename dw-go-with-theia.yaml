@@ -23,7 +23,6 @@ spec:
         plugin:
           kubernetes:
             name: theia-ide
-            namespace: user1-che
     commands:
       - id: run
         exec:
