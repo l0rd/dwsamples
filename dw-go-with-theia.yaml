@@ -19,7 +19,7 @@ spec:
             targetPort: 8080
           memoryLimit: 2Gi
           cpuLimit: 1000m
-      - name: theia-ide
+      - name: ide
         plugin:
           kubernetes:
             name: theia-ide
